@@ -1,7 +1,7 @@
 const { RegisterValidator } = require('@validator');
-const { User } = require('@models/user')
 const { success } = require('@lib/helper')
 
+const { User } = require('@models/user')
 class UserCtl {
     async register(ctx, next) {
         const v = await new RegisterValidator().validate(ctx);

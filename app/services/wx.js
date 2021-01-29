@@ -4,7 +4,6 @@ const { User } = require('@models/user')
 const { generateToken } = require('@core/util')
 const { Auth } = require('@middlewares/auth')
 const { wx: { appId, appSecret, loginUrl } } = require('@config')
-
 class WXManager {
     static async codeToToken(code) {
         const url = util.format(loginUrl, appId, appSecret, code)
@@ -13,14 +12,14 @@ class WXManager {
         if (result.status !== 200) {
             throw new global.errs.AuthFailed('openid获取失败')
         }
-        const { errcode, errmsg } = result.data
+        const { errcode, errmsg, openid } = result.data
 
-        if (errcode !== 0) {
+        if (errcode) {
             throw new global.errs.AuthFailed('openid获取失败' + errmsg)
         }
-        let user = User.getUserByOpenid(result.data.openid)
+        let user = await User.getUserByOpenid(openid)
         if (!user) {
-            user = User.registerByOpenid(openid)
+            user = await User.registerByOpenid(openid)
         }
         return generateToken(user.id, Auth.USER)
     }

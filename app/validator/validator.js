@@ -87,10 +87,35 @@ class TokenValidator extends LinValidator {
     }
 }
 
+class NotEmptyValidator extends LinValidator {
+    constructor () {
+        super()
+        this.token = [
+            new Rule('isLength', 'token不能为空', { min: 1 })
+        ]
+    }
+}
 
+class LikeValidator extends PositiveIntegerValidator {
+    constructor () {
+        super()
+        this.validateType = checkType
+    }
+}
+
+function checkType(vals) {
+    if (!vals.body.type) {
+        throw new Error('type不能为空')
+    }
+    if (!LoginType.isLoginType(vals.body.type)) {
+        throw new Error('type参数不合法')
+    }
+}
 
 module.exports = {
     PositiveIntegerValidator,
     RegisterValidator,
-    TokenValidator
+    TokenValidator,
+    NotEmptyValidator,
+    LikeValidator
 }

@@ -1,6 +1,6 @@
 module.exports = {
     database: {
-        dbName: 'island222',
+        dbName: 'island',
         host: 'localhost',
         port: 3306,
         user: 'root',
@@ -11,8 +11,8 @@ module.exports = {
         expiresIn: 60 * 60 * 24 * 30
     },
     wx: {
-        appId: '',
-        appSecret: '',
+        appId: 'wx80214ad545ac25b7',
+        appSecret: '550ad8a6d43d59ae4eb0d2474db6862b',
         loginUrl: 'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code'
     },
     yushu: {

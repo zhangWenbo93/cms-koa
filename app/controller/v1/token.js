@@ -1,4 +1,4 @@
-const { TokenValidator } = require('@validator');
+const { TokenValidator, NotEmptyValidator } = require('@validator');
 const { success } = require('@lib/helper')
 const { LoginType } = require('@lib/enum')
 const { User } = require('@models/user')
@@ -25,6 +25,14 @@ class TokenCtl {
         }
         ctx.body = {
             token
+        }
+    }
+
+    async verify(ctx) {
+        const v = await new NotEmptyValidator().validate(ctx)
+        const result = Auth.verifyToken(v.get('body.token'))
+        ctx.body = {
+            is_valid: result
         }
     }
 

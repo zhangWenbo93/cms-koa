@@ -43,7 +43,7 @@ User.init({
         primaryKey: true,
         autoIncrement: true
     },
-    nickname: { type: DataTypes.STRING },
+    nickname: DataTypes.STRING,
     email: {
         type: DataTypes.STRING(128),
         unique: true
