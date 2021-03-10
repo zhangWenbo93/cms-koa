@@ -1,10 +1,10 @@
 function isLoginType(val) {
     for (const key in this) {
         if (this[key] === val) {
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 const LoginType = {
@@ -15,6 +15,15 @@ const LoginType = {
     isLoginType
 };
 
-module.exports = {
-    LoginType
+const ArtType = {
+    Movie: 100,
+    Music: 200,
+    Sentence: 300,
+    BOOK: 400,
+    isLoginType
 }
+
+module.exports = {
+    LoginType,
+    ArtType
+};
