@@ -6,12 +6,8 @@ const { Favor } = require('./favor');
 const { yushu: { detailUrl, keywordUrl } } = require('@config');
 
 class Book extends Model {
-    constructor(id) {
-        super();
-        this.id = id;
-    }
-    async detail() {
-        const url = util.format(detailUrl, this.id);
+    async detail(id) {
+        const url = util.format(detailUrl, id);
         const detail = await axios.get(url);
         return detail.data;
     }

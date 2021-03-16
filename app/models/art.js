@@ -1,7 +1,6 @@
 const { Op } = require('sequelize');
 const { flatten } = require('lodash');
 const { Movie, Music, Sentence } = require('@models/classic');
-const { Favor } = require('@models/favor');
 class Art {
     constructor(art_id, type) {
         this.art_id = art_id;
@@ -9,10 +8,12 @@ class Art {
     }
 
     async getDetail(uid) {
+        const { Favor } = require('@models/favor'); // 放在里面调用，因为 Favor 里面调用了Art，相互调用有影响，会造成循环导入
         const art = await Art.getData(this.art_id, this.type);
         if (!art) {
             throw new global.errs.NotFound();
         }
+
         const like = await Favor.userLikeIt(this.art_id, this.type, uid);
         return {
             art,
@@ -88,10 +89,19 @@ class Art {
                 art = await Sentence.scope(scope).findOne(finder);
                 break;
             case 400:
+                // 书籍的表和其他三种类型的存在差异，书籍表是一个扩展表，书籍数据是通过三方服务接口请求而来，因此需要特殊处理，在处理书籍点赞时，若不存在该书籍，则需要通过id新增到扩展表
+                const { Book } = require('./book');
+                art = await Book.scope(scope).findOne(finder);
+                if (!art) {
+                    art = await Book.create({
+                        id: artId
+                    });
+                }
                 break;
             default:
                 break;
         }
+
         return art;
     }
 }
