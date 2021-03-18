@@ -21,14 +21,14 @@
   - 深入Koa中间件
   - Sequelize Scope应用
   - 理解Node.js在Web架构中的作用
-  - Koa开发API
+  - Koa2开发API
   - requireDirectory自动路由加载
   - LinValidator校验器
-  - Koa开发微信小程序用户系统
+  - Koa2开发微信小程序用户系统
   - 权限控制中间件
+  - 静态资源处理
+  - 数据序列化处理
   - PM2部署Node.js应用
-
-#### 效果
 
 #### 构建
 
