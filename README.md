@@ -19,12 +19,15 @@
 
 #### 知识点
 
+- 深入理解async与await
 - 深入JS异常处理与异步异常
 - 异步异常链与全局异常处理
+- 异步编程模型
+- 洋葱模型的应用
 - 深入Koa中间件
-- Sequelize Scope应用
+- Sequelize与MySQL
 - 理解Node.js在Web架构中的作用
-- Koa2开发API
+- Koa开发API
 - requireDirectory自动路由加载
 - LinValidator校验器
 - Koa2开发微信小程序用户系统
@@ -32,6 +35,10 @@
 - 静态资源处理
 - 数据序列化处理
 - PM2部署Node.js应用
+
+#### 相关链接
+
+[API说明地址](http://bl.talelin.com/dev/index.html)
 
 #### 构建
 
