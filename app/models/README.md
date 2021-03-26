@@ -95,4 +95,3 @@ Art.prototype.exclude = ['updateAt','deletedAt']
 const art = await new Art(artId, type).getDetail(ctx.state.auth.uid);
 art.exclude = ['updateAt','deletedAt']
 ```
-
