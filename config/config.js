@@ -4,7 +4,10 @@ module.exports = {
         host: 'localhost',
         port: 3306,
         user: 'root',
-        password: '123456'
+        password: '123456',
+        dialectOptions: {
+            socketPath: '/tmp/mysql.sock' // 指定套接字文件路径
+        }
     },
     security: {
         secretKey: 'islandae-o6@kxd&qi1o6_*1^lzi+0=3fwj4^*u5#0sc!zk+wb',

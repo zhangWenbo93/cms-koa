@@ -9,6 +9,8 @@ const KoaStatic = require('koa-static');
 const app = new Koa();
 
 const host = process.env.HOST || '127.0.0.1';
+// 发布时 修改 host 为 0.0.0.0 IPv4
+// const host = '0.0.0.0'
 const port = process.env.HOST || 3002;
 
 app.use(catchError);
